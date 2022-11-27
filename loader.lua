@@ -8,12 +8,16 @@ elseif syn.protect_gui then
 else
 	UI.Parent = game.CoreGui
 end
+wait(10)
+UI:Destroy()
 
 local plr = game:GetService("Players").LocalPlayer
 local whitelist = { "z_t0ht" }
 
 if table.find(whitelist, plr.Name) then
 	getgenv().SecureMode = true
+	local espLibrary =
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Sirius/main/library/esp/esp.lua"))()
 	local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Module-Hub/Source/main/raysource"))()
 	local Window = Rayfield:CreateWindow({
 		Name = "Module",
@@ -43,6 +47,8 @@ if table.find(whitelist, plr.Name) then
 
 	getgenv().mode = "Summer"
 	getgenv().DefaultCam = 1
+	getgenv().restock = true
+	getgenv().autofarm = true
 
 	_G.RadarSettings = {
 		--- Radar settings
@@ -88,6 +94,30 @@ if table.find(whitelist, plr.Name) then
 		},
 	}
 
+	-- services
+	local players = game:GetService("Players")
+	local workspace = game:GetService("Workspace")
+	local runService = game:GetService("RunService")
+	local inputService = game:GetService("UserInputService")
+	local networkClient = game:GetService("NetworkClient")
+	local virtualUser = game:GetService("VirtualUser")
+	local lighting = game:GetService("Lighting")
+	local teleportService = game:GetService("TeleportService")
+
+	-- variables
+	local camera = workspace.CurrentCamera
+	local localplayer = players.LocalPlayer
+	local mouse = localplayer:GetMouse()
+	local curveStatus = { player = nil, i = 0 }
+	local fovCircle = Drawing.new("Circle")
+	local ambient = lighting.Ambient
+	local keybinds = {}
+	local xray = {}
+	local fonts = {}
+	for font, index in next, Drawing.Fonts do
+		fonts[index] = font
+	end
+
 	local localplayer = Window:CreateTab("Localplayer", 7743876054) -- Title, Image
 
 	local Section = localplayer:CreateSection("WalkSpeed")
@@ -119,8 +149,7 @@ if table.find(whitelist, plr.Name) then
 	local Section = localplayer:CreateSection("RTX Graphics")
 	local Button = localplayer:CreateButton({
 		Name = "RTX Graphics",
-		Callback = function()
-		end,
+		Callback = function() end,
 	})
 
 	local Section = localplayer:CreateSection("UI Settings")
@@ -134,8 +163,16 @@ if table.find(whitelist, plr.Name) then
 	local Section = localplayer:CreateSection("GPUSAVER")
 	local Button = localplayer:CreateButton({
 		Name = "GPUSaver",
-		Callback = function() 
+		Callback = function()
 			loadstring(game:HttpGet("https://personal.zt0ht.repl.co/Storage/gpu.lua"))()
+		end,
+	})
+
+	local Section = localplayer:CreateSection("Advanced ESP")
+	local Button = localplayer:CreateButton({
+		Name = "Load ESP",
+		Callback = function()
+			espLibrary:Load()
 		end,
 	})
 
@@ -317,6 +354,29 @@ if table.find(whitelist, plr.Name) then
 		end,
 	})
 
+	local Section = DR:CreateSection("Phantom Forces")
+	local Button = DR:CreateButton({
+		Name = "Module Phantom Forces",
+		Callback = function()
+			loadstring(game:HttpGet("https://personal.zt0ht.repl.co/Storage/universal.lua"))()
+		end,
+	})
+
+	local Section = DR:CreateSection("Delivery Simulator")
+	local Button = DR:CreateButton({
+		Name = "Restock",
+		Callback = function()
+
+loadstring(game:HttpGet("https://pastebin.com/raw/LXHi7HWj"))()
+		end,
+	})
+	local Button = DR:CreateButton({
+		Name = "Moonmap",
+		Callback = function()
+			loadstring(game:HttpGet("https://pastebin.com/raw/bFNiqrzQ"))()
+		end,
+	})
+
 	local Utilities = Window:CreateTab("Utilities", 7734021047)
 
 	local Section = Utilities:CreateSection("Player Rader")
@@ -397,6 +457,5 @@ if table.find(whitelist, plr.Name) then
 	local Paragraph = Credits:CreateParagraph({ Title = "Warning", Content = "Utilities is still in beta" })
 	local Paragraph = Credits:CreateParagraph({ Title = "Warning", Content = "Dangerous Speeds is still in beta" })
 	local Paragraph = Credits:CreateParagraph({ Title = "Warning", Content = "Localplayer is still in beta" })
-
 	Rayfield:LoadConfiguration()
 end
