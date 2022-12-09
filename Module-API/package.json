@@ -1,0 +1,21 @@
+{
+  "name": "module-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "noblox.js": "^4.13.1",
+    "sqlite3": "^5.1.2",
+    "stripe": "^11.3.0"
+  }
+}

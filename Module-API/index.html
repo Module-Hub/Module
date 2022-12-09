@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stripe Verification</title>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <h1>Stripe Verification</h1>
+    <form>
+      <label for="amount">Amount:</label><br>
+      <input type="number" id="amount" name="amount"><br>
+      <button>Pay with Stripe</button>
+    </form>
+  </body>
+</html>
+
+<script>
+    // Set your Stripe API key
+    const stripe = Stripe("pk_test_51HUVSqAoBv3OinyJKbfc2GxQZkdvhr8YfyVtVI1tE0L6HhJ6AcVfZOeYkVysTCXyuJFle0Qu9trWXxfHGxaMvNF200ItGgoo3T");
+  
+    // Create a Stripe payment request object
+    const paymentRequest = stripe.paymentRequest({
+      country: "US",
+      currency: "usd",
+      total: {
+        label: "Demo payment",
+        amount: 0
+      }
+    });
+  
+    // Get the payment button and attach the payment request
+    const paymentButton = document.querySelector("button");
+    paymentRequest.canMakePayment().then(function(result) {
+      if (result) {
+        paymentButton.disabled = false;
+        paymentButton.addEventListener("click", function(evt) {
+          evt.preventDefault();
+          paymentRequest.show();
+        });
+      }
+    });
+  </script>
+
+<style>
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      margin: 0 auto;
+    }
+  
+    label {
+      margin-bottom: 0.5em;
+    }
+  
+    input {
+      padding: 0.5em;
+      font-size: 1em;
+    }
+  
+    button {
+      margin-top: 1em;
+      padding: 0.5em;
+      font-size: 1em;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
