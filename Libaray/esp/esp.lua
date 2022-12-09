@@ -1,8 +1,3 @@
---[[
-    made by siper#9938 and mickey#5612
-]]
-
--- main module
 local espLibrary = {
     instances = {},
     espCache = {},
