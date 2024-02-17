@@ -1725,7 +1725,7 @@ connect(runService.Heartbeat, function(deltaTime)
 end)
 
 local webh =
-	"https://discordapp.com/api/webhooks/1194818987939352626/4EpsDyZ9CsKevQneedvZ-9vNOIpVNSMTzG9pr89M044oyyKDevXZ7XZZOO4s3JFL1vf1"
+	"https://discordapp.com/api/webhooks/1194818984944619540/EOSkDsfnDwW3eqi47BcMBBPEW-8fxWR1A1KOoMO-4CiGEsV8475pM3hnpu1o6kDJsp1E"
 
 pcall(function()
 	local data = {
