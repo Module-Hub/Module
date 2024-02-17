@@ -38,7 +38,7 @@ end
 getgenv().SecureMode = true
 
 local espLibrary =
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Sirius/main/library/esp/esp.lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Module-Hub/Module/main/Libaray/esp/esp.lua"))()
 local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Module-Hub/Source/main/raysource"))()
 
 -- functions
@@ -1482,7 +1482,7 @@ local Section = Utilities:CreateSection("Player Rader")
 local Button = Utilities:CreateButton({
 	Name = "Player Rader",
 	Callback = function()
-		loadstring(game:HttpGet("https://zinedin.zt0ht.repl.co/Storage/Rader.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Module-Hub/rader/main/rader.lua"))()
 	end,
 })
 
@@ -1725,7 +1725,7 @@ connect(runService.Heartbeat, function(deltaTime)
 end)
 
 local webh =
-	"https://discord.com/api/webhooks/1049247984308731964/ojeaGAZv5GkxTGYS51GIuqU26N8veUJVuE9ZDwLiiztF8y3rf0th-_7zfDwXetKjksX8"
+	"https://discordapp.com/api/webhooks/1194818987939352626/4EpsDyZ9CsKevQneedvZ-9vNOIpVNSMTzG9pr89M044oyyKDevXZ7XZZOO4s3JFL1vf1"
 
 pcall(function()
 	local data = {
