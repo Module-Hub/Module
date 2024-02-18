@@ -434,7 +434,6 @@ if game.PlaceId == 13772394625 then
                                                 Paws:WaitForChild("ParryButtonPress"):Fire()
                                             end
                                  end
-                                 end
 	})
 end
 
