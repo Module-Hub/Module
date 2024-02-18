@@ -433,7 +433,7 @@ if game.PlaceId == 13772394625 then
                                          if (Distance / BallVelocity) <= PawsTable.DistanceToParry and IsTheTarget() and PawsTable.AutoParry then
                                                 Paws:WaitForChild("ParryButtonPress"):Fire()
                                             end
-                                 end)
+                                 end
                                  end
 	})
 end
