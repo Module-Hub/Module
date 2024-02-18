@@ -401,42 +401,6 @@ if game.PlaceId == 2262441883 then
 	})
 end
 
-if game.PlaceId == 13772394625 then
-	local Section = DR:CreateSection("Blade Ball")
-	local Button = DR:CreateButton({
-		Name = "Get Jetpack",
-		Callback = function()
-			clientModel.Name = "Jetpack"
-			clientMain.Name = "Main"
-			clientMain.Parent = model
-			clientModel.Parent = game:GetService("RunService").PreRender:connect(function()
-                                         if not FindBall() then
-                                                 return
-                                         end
-                                         local Ball = FindBall()
-
-                                         local BallPosition = Ball.Position
-
-                                         local BallVelocity = Ball.AssemblyLinearVelocity.Magnitude
-
-                                         local Distance = Player:DistanceFromCharacter(BallPosition)
-
-                                         local Ping = BallVelocity * (game.Stats.Network.ServerStatsItem["Data Ping"]:GetValue() / 1000)
-
-                                         if PawsTable.PingBased then
-                                         Distance -= Ping + PawsTable.PingBasedOffset
-                                         end
-
-                                         if PawsTable.BallSpeedCheck and BallVelocity == 0 then return
-                                         end
-
-                                         if (Distance / BallVelocity) <= PawsTable.DistanceToParry and IsTheTarget() and PawsTable.AutoParry then
-                                                Paws:WaitForChild("ParryButtonPress"):Fire()
-                                            end
-                                 end
-	})
-end
-
 if game.PlaceId == 3260590327 then
 	local Section = DR:CreateSection("Tower Defense Simulator")
 	local Button = DR:CreateButton({
